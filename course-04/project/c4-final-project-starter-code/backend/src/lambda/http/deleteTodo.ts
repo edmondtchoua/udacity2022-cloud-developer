@@ -4,7 +4,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import * as middy from 'middy'
 import { cors, httpErrorHandler } from 'middy/middlewares'
 
-import { deleteTodo,getTodosById } from '../../helpers/todos'
+import { deleteTodo,getTodosById } from '../../businessLogic/todos'
 //import { getUserId } from '../utils'
 import { createLogger } from '../../utils/logger'
 
@@ -26,8 +26,7 @@ export const handler = middy(
     }catch(err){
       logger.error('Todo not deleted', { error: err.message })
     }
-    
-)
+ })
 
 handler
   .use(httpErrorHandler())
